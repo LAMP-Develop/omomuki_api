@@ -17,10 +17,12 @@ class CreateRestaurantsTable extends Migration
             // TODO: マイグレーションが通らない。外部キーが上手くできていない？
             $table->id();
             $table->string('name');
-            $table->foreignId('cuisine_genre_id')->constrained();
+            $table->unsignedBigInteger('cuisine_genre_id');
+            $table->foreign('cuisine_genre_id')->references('id')->on('cuisine_genre');
             $table->string('tel')->unique();
             $table->string('zipcode');
-            $table->foreignId('pref_id')->constrained();
+            $table->unsignedBigInteger('pref_id');
+            $table->foreign('pref_id')->references('id')->on('pref');
             $table->string('address1');
             $table->string('address2');
             $table->string('gmap_url')->nullable();
