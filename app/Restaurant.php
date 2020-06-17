@@ -9,6 +9,7 @@ class Restaurant extends Model
     protected $table = 'restaurants';
     protected $primaryKey = 'id';
 
-    const CREATED_AT = 'creation_date';
-    const UPDATED_AT = 'last_update';
+
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 }
