@@ -27,7 +27,7 @@ class RestaurantsController extends Controller
         $electronic_money = $request->input('electronic_money');
 
         if(!empty($zipcode)){
-
+            // test
         }
 
         if(!empty($pref)){
