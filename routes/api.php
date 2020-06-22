@@ -20,3 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 // return restaurants data
 Route::resource('restaurants', 'RestaurantsController');
+Route::resource('cuisine-genre', 'CuisineGenreController');
+Route::resource('pref', 'Pref');
