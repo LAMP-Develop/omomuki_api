@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // return restaurants data
 Route::resource('restaurants', 'RestaurantsController');
+Route::resource('cuisine-genre', 'CuisineGenreController');
+Route::resource('pref', 'PrefController');
