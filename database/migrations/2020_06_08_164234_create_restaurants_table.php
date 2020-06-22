@@ -14,7 +14,6 @@ class CreateRestaurantsTable extends Migration
     public function up()
     {
         Schema::create('restaurants', function (Blueprint $table) {
-            // TODO: マイグレーションが通らない。外部キーが上手くできていない？
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('cuisine_genre_id');
