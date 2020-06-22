@@ -41,6 +41,22 @@ class RestaurantsController extends Controller
             $query->whereNotNull('electronic_money');
         }
 
+        if ($request->has('gnavi_url')) {
+            $query->whereNotNull('gnavi_url');
+        }
+
+        if ($request->has('tabelog_url')) {
+            $query->whereNotNull('tabelog_url');
+        }
+
+        if ($request->has('demaecan_url')) {
+            $query->whereNotNull('demaecan_url');
+        }
+
+        if ($request->has('ubereats_url')) {
+            $query->whereNotNull('ubereats_url');
+        }
+
         $restaurants = $query->paginate(10)->orderBy('thumbnail', 'asc');
 
         return $restaurants;
