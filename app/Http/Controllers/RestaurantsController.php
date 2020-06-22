@@ -41,7 +41,7 @@ class RestaurantsController extends Controller
             $query->whereNotNull('electronic_money');
         }
 
-        $restaurants = $query->paginate(10);
+        $restaurants = $query->paginate(10)->orderBy('thumbnail', 'asc');
 
         return $restaurants;
     }

@@ -112,7 +112,6 @@ return [
          */
         'locales' => [
             'ja',
-            //'pt',
         ],
     ],
 
