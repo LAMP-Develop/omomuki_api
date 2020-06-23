@@ -57,7 +57,9 @@ class RestaurantsController extends Controller
             $query->whereNotNull('ubereats_url');
         }
 
-        $restaurants = $query->orderByDesc('id')->paginate(10);
+        $query->orderBy('id', 'desc');
+
+        $restaurants = $query->paginate(10);
 
         return $restaurants;
     }
