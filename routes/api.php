@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-// return restaurants data
+// return api
 Route::resource('restaurants', 'RestaurantsController');
 Route::resource('cuisine-genre', 'CuisineGenreController');
 Route::resource('pref', 'PrefController');
+Route::resource('restaurant-menu', 'RestaurantMenuController');
