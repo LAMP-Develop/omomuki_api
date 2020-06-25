@@ -57,7 +57,11 @@ class RestaurantsController extends Controller
             $query->whereNotNull('ubereats_url');
         }
 
-        $query->orderBy('id', 'desc');
+        if ($request->has('fixed')) {
+            $query->whereNotNull('fixed');
+        }
+
+        $query->orderBy('fixed', 'asc');
 
         $restaurants = $query->paginate(12);
 
