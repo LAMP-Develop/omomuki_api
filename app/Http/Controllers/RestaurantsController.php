@@ -34,31 +34,31 @@ class RestaurantsController extends Controller
         }
 
         if ($request->has('credit_card')) {
-            $query->whereNotNull('credit_card');
+            $query->whereNotNull('credit_card')->where('credit_card', '<>', '');
         }
 
         if ($request->has('electronic_money')) {
-            $query->whereNotNull('electronic_money');
+            $query->whereNotNull('electronic_money')->where('electronic_money', '<>', '');
         }
 
         if ($request->has('gnavi_url')) {
-            $query->whereNotNull('gnavi_url');
+            $query->whereNotNull('gnavi_url')->where('gnavi_url', '<>', '');
         }
 
         if ($request->has('tabelog_url')) {
-            $query->whereNotNull('tabelog_url');
+            $query->whereNotNull('tabelog_url')->where('tabelog_url', '<>', '');
         }
 
         if ($request->has('demaecan_url')) {
-            $query->whereNotNull('demaecan_url');
+            $query->whereNotNull('demaecan_url')->where('demaecan_url', '<>', '');
         }
 
         if ($request->has('ubereats_url')) {
-            $query->whereNotNull('ubereats_url');
+            $query->whereNotNull('ubereats_url')->where('ubereats_url', '<>', '');
         }
 
         if ($request->has('fixed')) {
-            $query->whereNotNull('fixed');
+            $query->whereNotNull('fixed')->where('fixed', '<>', '');
         }
 
         $query->orderBy('fixed', 'desc');
