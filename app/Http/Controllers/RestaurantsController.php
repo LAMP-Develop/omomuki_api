@@ -17,15 +17,15 @@ class RestaurantsController extends Controller
     {
         $query = Restaurant::query();
 
-        if ($request->has('zipcode')) {
+        if ($request->has('zipcode') && $request->get('zipcode') != '') {
             $query->where('zipcode', $request->get('zipcode'));
         }
 
-        if ($request->has('pref')) {
+        if ($request->has('pref') && $request->get('pref') != '') {
             $query->where('pref_id', $request->get('pref'));
         }
 
-        if ($request->has('genre')) {
+        if ($request->has('genre') && $request->get('genre') != '') {
             $query->where('cuisine_genre_id', $request->get('genre'));
         }
 
