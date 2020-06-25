@@ -59,7 +59,7 @@ class RestaurantsController extends Controller
 
         $query->orderBy('id', 'desc');
 
-        $restaurants = $query->paginate(10);
+        $restaurants = $query->paginate(12);
 
         return $restaurants;
     }
