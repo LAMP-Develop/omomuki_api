@@ -61,7 +61,7 @@ class RestaurantsController extends Controller
             $query->whereNotNull('fixed');
         }
 
-        $query->orderBy('fixed', 'asc');
+        $query->orderBy('fixed', 'desc');
 
         $restaurants = $query->paginate(12);
 
