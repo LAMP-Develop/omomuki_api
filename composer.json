@@ -16,7 +16,6 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "rennokki/laravel-eloquent-query-cache": "^2.0",
         "tcg/voyager": "^1.4"
     },
     "require-dev": {
