@@ -23,7 +23,8 @@ class RestaurantsController extends Controller
                 ->orWhere('address2', 'LIKE', "%{$keyword}%")
                 ->orWhere('parking_text', 'LIKE', "%{$keyword}%")
                 ->orWhere('name', 'LIKE', "%{$keyword}%")
-                ->orWhere('access', 'LIKE', "%{$keyword}%");
+                ->orWhere('access', 'LIKE', "%{$keyword}%")
+                ->orWhere('tags', 'LIKE', "%{$keyword}%");
         }
 
         if ($request->has('zipcode') && $request->get('zipcode') != '') {
