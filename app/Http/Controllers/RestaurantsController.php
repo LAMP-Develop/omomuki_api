@@ -17,6 +17,15 @@ class RestaurantsController extends Controller
     {
         $query = Restaurant::query();
 
+        if ($request->has('keyword') && $request->get('keyword') != '') {
+            $keyword = $request->get('keyword');
+            $query->where('address1', 'LIKE', "%{$keyword}%")
+                ->orWhere('address2', 'LIKE', "%{$keyword}%")
+                ->orWhere('parking_text', 'LIKE', "%{$keyword}%")
+                ->orWhere('name', 'LIKE', "%{$keyword}%")
+                ->orWhere('access', 'LIKE', "%{$keyword}%");
+        }
+
         if ($request->has('zipcode') && $request->get('zipcode') != '') {
             $query->where('zipcode', $request->get('zipcode'));
         }
