@@ -19,12 +19,21 @@ class RestaurantsController extends Controller
 
         if ($request->has('keyword') && $request->get('keyword') != '') {
             $keyword = $request->get('keyword');
-            $query->where('address1', 'LIKE', "%{$keyword}%")
-                ->orWhere('address2', 'LIKE', "%{$keyword}%")
-                ->orWhere('parking_text', 'LIKE', "%{$keyword}%")
-                ->orWhere('name', 'LIKE', "%{$keyword}%")
-                ->orWhere('access', 'LIKE', "%{$keyword}%")
-                ->orWhere('tags', 'LIKE', "%{$keyword}%");
+            $keywords = str_replace('+', ' ', $keyword);
+            $keywords = str_replace('　', ' ', $keywords);
+            $keywords = str_replace('%', ' ', $keywords);
+            $keywords = preg_replace('/\s(?=\s)/', '', $keywords);
+            $keywords = trim($keywords);
+            $keywords = array_unique(explode(' ', $keywords));
+
+            foreach ($keywords as $keys) {
+                $query->where('address1', 'LIKE', "%{$keys}%")
+                ->orWhere('address2', 'LIKE', "%{$keys}%")
+                ->orWhere('parking_text', 'LIKE', "%{$keys}%")
+                ->orWhere('name', 'LIKE', "%{$keys}%")
+                ->orWhere('access', 'LIKE', "%{$keys}%")
+                ->orWhere('tags', 'LIKE', "%{$keys}%");
+            }
         }
 
         if ($request->has('zipcode') && $request->get('zipcode') != '') {
