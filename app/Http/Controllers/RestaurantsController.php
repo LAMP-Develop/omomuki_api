@@ -13,7 +13,7 @@ class RestaurantsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $paginate = 12)
     {
         $query = Restaurant::query();
 
@@ -57,10 +57,12 @@ class RestaurantsController extends Controller
             $query->whereNotNull('ubereats_url')->where('ubereats_url', '<>', '');
         }
 
+        // 導入店舗
         if ($request->has('fixed')) {
             $query->whereNotNull('fixed')->where('fixed', '<>', '');
         }
 
+        // キーワード検索
         if ($request->has('keyword') && $request->get('keyword') != '') {
             $keyword = $request->get('keyword');
             $keywords = str_replace('+', ' ', $keyword);
@@ -82,9 +84,9 @@ class RestaurantsController extends Controller
             }
         }
 
-        $query->orderBy('fixed', 'desc');
+        $query->orderBy('fixed', 'desc'); // 導入店舗を優先的に
 
-        $restaurants = $query->paginate(12);
+        $restaurants = $query->paginate($paginate);
 
         return $restaurants;
     }
