@@ -13,7 +13,7 @@ class RestaurantsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $paginate = 12)
+    public function index(Request $request)
     {
         $query = Restaurant::query();
 
@@ -85,6 +85,12 @@ class RestaurantsController extends Controller
         }
 
         $query->orderBy('fixed', 'desc'); // 導入店舗を優先的に
+
+        if ($request->has('paginate') && $request->has('paginate') != '') {
+            $paginate = (int)$request->get('paginate');
+        } else {
+            $paginate = 12;
+        }
 
         $restaurants = $query->paginate($paginate);
 
